@@ -77,3 +77,17 @@ Plugin 'jistr/vim-nerdtree-tabs'
 	
 	"設定 NERDTree Tabs 為自動啟動"
 	let g:nerdtree_tabs_open_on_console_startup = 1
+
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+	if has('gui_running')
+		set background=dark
+		colorscheme solarized
+	else
+		colorscheme zenburn
+	endif
+		" Solarized dark light switch
+		call togglebg#map("<F5>")
+
+Plugin 'Lokaltog/powerline'	
+	let g:Powerline_symbols = 'fancy'
