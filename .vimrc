@@ -3,7 +3,7 @@ colo lucid
 set number
 set ai
 set bg=dark
-set tabstop=2
+set tabstop=4
 set shiftwidth=4
 set mouse=a
 set ruler
@@ -42,52 +42,38 @@ syntax on
 
 set nocompatible              " required
 filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
 call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-    Plugin 'gmarik/Vundle.vim'
-		    
-		" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-		" All of your Plugins must be added before the following line
-		call vundle#end()            " required
-		filetype plugin indent on    " required
+	Plugin 'gmarik/Vundle.vim'
+	Plugin 'Lokaltog/vim-powerline'
+	Plugin 'scrooloose/nerdtree'
+		let NERDTreeChDirMode=1
+		"顯示書簽"
+		let NERDTreeShowBookmarks=1
+		"設置忽略文件類型"
+		let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+		"窗口大小"
+		let NERDTreeWinSize=40
 
-
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'scrooloose/nerdtree'
-	"F2開啟和關閉樹"
-	map <F2> :NERDTreeToggle<CR>
-	let NERDTreeChDirMode=1
-	"顯示書簽"
-	let NERDTreeShowBookmarks=1
-	"設置忽略文件類型"
-	let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
-	"窗口大小"
-	let NERDTreeWinSize=40
-
-Plugin 'jistr/vim-nerdtree-tabs'
-	"以下為 NERDTree Tabs 相關設定，直接加入在 vimrc 檔案最後即可，透過 NERDTree Tabs 開啟檔案，快捷鍵: \t"
-	nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+	Plugin 'jistr/vim-nerdtree-tabs'
+		"以下為 NERDTree Tabs 相關設定，直接加入在 vimrc 檔案最後即可，透過 NERDTree Tabs 開啟檔案，快捷鍵: \t"
+		nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 	
-	"設定 NERDTree Tabs 為自動啟動"
-	let g:nerdtree_tabs_open_on_console_startup = 1
+		"設定 NERDTree Tabs 為自動啟動
+		let g:nerdtree_tabs_open_on_console_startup = 1
 
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-	if has('gui_running')
-		set background=dark
-		colorscheme solarized
-	else
-		colorscheme zenburn
-	endif
-		" Solarized dark light switch
-		call togglebg#map("<F5>")
+	Plugin 'jnurmine/Zenburn'
+	Plugin 'altercation/vim-colors-solarized'
+		if has('gui_running')
+			set background=dark
+			colorscheme solarized
+		else
+			colorscheme zenburn
+		endif
 
-Plugin 'Lokaltog/powerline'	
-	let g:Powerline_symbols = 'fancy'
+	Plugin 'scrooloose/syntastic'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
